@@ -1,0 +1,114 @@
+\documentclass[10pt]{article}
+
+\usepackage[margin=1cm]{geometry}
+\usepackage[explicit]{titlesec}
+\usepackage{enumitem}
+
+\pagenumbering{gobble}
+\setlength\parindent{0pt}
+\setlist[itemize]{label=\textendash, noitemsep, topsep=3pt, leftmargin=*}
+
+\newcommand*\ruleline[1]{\par\noindent\raisebox{.6ex}{\makebox[\linewidth]{\hrulefill\hspace{1ex}\raisebox{-.6ex}{#1}\hspace{1ex}\hrulefill}}}
+%\newcommand{\raisedrulefill}[2][0ex]{\leaders\hbox{\rule[#1]{1pt}{#2}}\hfill}
+%\titleformat{\section}{\scshape\Large}{}{0pt}{#1\,\raisedrulefill[0.4ex]{0.5pt}}
+\titleformat{\section}{\scshape\Large}{}{0pt}{\ruleline{#1}}
+\titlespacing{\section}{0pt}{13pt}{0pt}
+
+% Definitions for resume %
+
+\def \normspace {4.5mm}
+
+\newcommand{\nameinfo}[5]{
+	\begin{center}
+	{\Huge\textsc{#1}}\vspace{2mm}\break
+	\begin{tabular}{@{}c|c|c|c}
+	#2 & #3 & #4 & #5
+	\end{tabular}
+	\end{center}
+}
+
+\newcommand{\job}[3]{
+	\vspace{\normspace}
+	\makebox[\textwidth]{{\large \textbf{#1}}\hfill \textbf{#3}}\vspace{1mm}
+	{\large \textit{#2}}
+}
+
+\newcommand{\project}[1]{
+	\vspace{\normspace}
+	{\large \textbf{#1}}
+}
+
+\newcommand{\school}[3]{
+	\vspace{\normspace}
+	\makebox[\textwidth]{{\large \textbf{#1}}\hfill \textbf{#3}}\vspace{1mm}
+	{\large \textit{#2}}
+}
+
+% Resume %
+
+\begin{document}
+
+\nameinfo{Sean Helm}{\textbf{seanhelm}.com}{\textbf{seanmdhelm}@gmail.com}{github.com/\textbf{seanhelm}}{linkedin.com/in/\textbf{seanhelm}}
+
+\section*{Experience}
+
+\job{Capital One}{Data/Software Engineer}{Sep 2018 --}
+\begin{itemize}
+\item Architected a caching solution for a big data exploration platform to reduce retrieval latency for recently run Snowflake queries.
+\item Lowered operational costs by enabling lifecycle management for the underlying cache and metadata.
+\end{itemize}
+
+\job{Alarm.com}{Software Engineering Intern}{Jun 2017 - Aug 2017}
+\begin{itemize}
+\item Optimized home automation testing by implementing a Windows service in C\# for allocating device tests to available servers.
+\item Leveraged Ember.js to facilitate interaction with the distributed testing service and to display real-time testing results.
+\item Integrated a REST API with ASP.NET to serve as the bridge between the front-end client and the distributed testing service.
+\end{itemize}
+
+\job{Alarm.com}{Software Engineering Intern}{Jun 2016 - Aug 2016}
+\begin{itemize}
+\item Automated a manual process by building an API in C\# to efficiently update branding information on security panels.
+\item Implemented a caching system for account information to speed up the dealer site page load speed by 40-60\%.
+\item Developed a responsive, customer-facing tool to allow home owners to search for and verify local home security dealers.
+\end{itemize}
+
+\job{Sure Secure Solutions}{Software Engineering Intern}{Aug 2014 -- Aug 2015}
+\begin{itemize}
+\item Revamped a static archive to a secure and dynamic web portal in PHP for easy maintainability. 
+\item Redesigned the company website using HTML/CSS and JavaScript to make web pages robust and responsive.
+\end{itemize}
+
+\section*{Education}
+
+\school{George Mason University}{Bachelor of Science in Computer Science; Major GPA: 3.38.}{2018}
+
+\section*{Projects}
+
+\project{Music Genre Classification with Gradient Boosting}
+\begin{itemize}
+\item Applied XGBoost machine learning algorithm in Python to classify music genres using features extracted with LibROSA.
+\item Utilized Matplotlib to produce visualizations of various performance metrics to help improve the classification model.
+\end{itemize}
+
+\project{Reddit Sentiment Analysis}
+\begin{itemize}
+\item Filtered negative Reddit comments in real-time into MongoDB using TextBlob sentiment analysis.
+\item Created a user-friendly web application using Node.js, Express, and Vue.js to review newly extracted comments.
+\end{itemize}
+
+\project{Toxic Mushroom Deep Dive}
+\begin{itemize}
+\item Compared different Scikit-learn machine learning algorithms in Python for predicting whether mushrooms were toxic or edible.
+\end{itemize}
+
+\section*{Skills}
+
+\vspace{\normspace}
+\begin{tabular}{@{}rl}
+\textbf{Languages}: & Python, Java, JavaScript, C\#, SQL, C, HTML, CSS, \LaTeX \\
+\textbf{Data Science}: & Scikit-learn, Pandas, Numpy, Snowflake, ZooKeeper \\
+\textbf{Web}: & Spring, Hibernate, Express, React, Ember.js, Node.js, ASP.NET \\
+\textbf{Infrastructure}: & AWS, Terraform, Jenkins, Docker
+\end{tabular}
+
+\end{document}

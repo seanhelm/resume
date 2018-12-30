@@ -9,8 +9,6 @@
 \setlist[itemize]{label=\textendash, noitemsep, topsep=3pt, leftmargin=*}
 
 \newcommand*\ruleline[1]{\par\noindent\raisebox{.6ex}{\makebox[\linewidth]{\hrulefill\hspace{1ex}\raisebox{-.6ex}{#1}\hspace{1ex}\hrulefill}}}
-%\newcommand{\raisedrulefill}[2][0ex]{\leaders\hbox{\rule[#1]{1pt}{#2}}\hfill}
-%\titleformat{\section}{\scshape\Large}{}{0pt}{#1\,\raisedrulefill[0.4ex]{0.5pt}}
 \titleformat{\section}{\scshape\Large}{}{0pt}{\ruleline{#1}}
 \titlespacing{\section}{0pt}{13pt}{0pt}
 
@@ -54,8 +52,10 @@
 
 \job{Capital One}{Data/Software Engineer}{Sep 2018 --}
 \begin{itemize}
-\item Architected a caching solution for a big data exploration platform to reduce retrieval latency for recently run Snowflake queries.
-\item Lowered operational costs by enabling lifecycle management for the underlying cache and metadata.
+\item Architected a caching solution in Java/Spring for a big data platform to reduce latency for recently run Snowflake queries.
+\item Lowered operational costs by enabling lifecycle management for the underlying cache and metadata using Python.
+\item Captured clickstream data with React.js and relayed to Amazon Redshift for user workflow analysis.
+\item Built out infrastructure with Jenkins and Terraform to automate deployment of AWS resources for cache microservice.
 \end{itemize}
 
 \job{Alarm.com}{Software Engineering Intern}{Jun 2017 - Aug 2017}
@@ -80,7 +80,7 @@
 
 \section*{Education}
 
-\school{George Mason University}{Bachelor of Science in Computer Science; Major GPA: 3.38.}{2018}
+\school{George Mason University}{Bachelor of Science in Computer Science; Major GPA: 3.38.}{May 2018}
 
 \section*{Projects}
 
@@ -98,17 +98,15 @@
 
 \project{Toxic Mushroom Deep Dive}
 \begin{itemize}
-\item Compared different Scikit-learn machine learning algorithms in Python for predicting whether mushrooms were toxic or edible.
+\item Compared Scikit-learn machine learning algorithms in Python for predicting whether mushrooms were toxic or edible.
 \end{itemize}
 
 \section*{Skills}
 
 \vspace{\normspace}
 \begin{tabular}{@{}rl}
-\textbf{Languages}: & Python, Java, JavaScript, C\#, SQL, C, HTML, CSS, \LaTeX \\
-\textbf{Data Science}: & Scikit-learn, Pandas, Numpy, Snowflake, ZooKeeper \\
-\textbf{Web}: & Spring, Hibernate, Express, React, Ember.js, Node.js, ASP.NET \\
-\textbf{Infrastructure}: & AWS, Terraform, Jenkins, Docker
+\textbf{Languages}: & Python, Java, SQL, JavaScript, C \\
+\textbf{Frameworks/Tools}: & Spring, Hibernate, Scikit-learn, React.js, Terraform, Jenkins \\
 \end{tabular}
 
 \end{document}

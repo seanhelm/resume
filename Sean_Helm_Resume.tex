@@ -1,45 +1,51 @@
-\documentclass[10pt]{article}
+\documentclass[letterpaper,10pt]{article}
 
 \usepackage[margin=1.1cm]{geometry}
-\usepackage[explicit]{titlesec}
+\usepackage{titlesec}
 \usepackage{enumitem}
 
 \pagenumbering{gobble}
-\setlength\parindent{0pt}
-\setlist[itemize]{label=\textendash, noitemsep, topsep=3pt, leftmargin=*}
 
-\newcommand*\ruleline[1]{\par\noindent\raisebox{.6ex}{\makebox[\linewidth]{\hrulefill\hspace{1ex}\raisebox{-.6ex}{#1}\hspace{1ex}\hrulefill}}}
-\titleformat{\section}{\scshape\Large}{}{0pt}{\ruleline{#1}}
-\titlespacing{\section}{0pt}{13pt}{0pt}
+\setlength\parindent{0pt}
+\setlist[itemize]{
+  label=\textendash, itemsep=-2pt, topsep=3pt, leftmargin=*
+}
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\Large
+}{}{0pt}{}[\titlerule ]
+\titlespacing*{\section}{0pt}{10pt}{13pt}
 
 % Definitions for resume %
 
-\def \normspace {4.5mm}
+\newcommand{\resumeSectionBegin}[1]{\section{#1}}
+\newcommand{\resumeSectionEnd}{\vspace{3pt}}
+
+\newcommand{\resumeItemBegin}{\vspace{1pt}}
+\newcommand{\resumeItemEnd}{\vspace{10pt}}
 
 \newcommand{\nameinfo}[5]{
-	\begin{center}
-	{\Huge\textsc{#1}}\vspace{2mm}\break
-	\begin{tabular}{@{}c|c|c|c}
-	#2 & #3 & #4 & #5
-	\end{tabular}
-	\end{center}
+  \begin{center}
+  {\Huge\textsc{#1}}\vspace{2mm}\break
+  \addtolength{\tabcolsep}{6pt} 
+  \begin{tabular}{@{}c|c|c|c}
+  #2 & #3 & #4 & #5
+  \vspace{15pt}
+  \end{tabular}
+  \addtolength{\tabcolsep}{-6pt} 
+  \end{center}
 }
 
-\newcommand{\job}[3]{
-	\vspace{\normspace}
-	\makebox[\textwidth]{{\large \textbf{#1}}\hfill \textbf{#3}}\vspace{1mm}
-	{\large \textsl{#2}}
+\newcommand{\resumeItemHeading}[4]{
+  \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    {\large \textbf{#1}} & \textsl{#3}\vspace{3pt} \\
+    {\large \textsl{#2}} & \textsl{#4} \\
+  \end{tabular*}
 }
 
 \newcommand{\project}[1]{
-	\vspace{\normspace}
-	{\large \textbf{#1}}
-}
-
-\newcommand{\school}[3]{
-	\vspace{\normspace}
-	\makebox[\textwidth]{{\large \textbf{#1}}\hfill \textbf{#3}}\vspace{1mm}
-	{\large \textsl{#2}}
+  {\large \textbf{#1}}\vspace{1pt}
 }
 
 % Resume %
@@ -48,60 +54,76 @@
 
 \nameinfo{Sean Helm}{\textbf{seanhelm}.com}{\textbf{seanmdhelm}@gmail.com}{github.com/\textbf{seanhelm}}{linkedin.com/in/\textbf{seanhelm}}
 
-\section*{Experience}
+% Experience %
 
-\job{Amazon}{Software Development Engineer}{April 2019 --}
-\begin{itemize}
-\item Building out Fulfillment By Amazon (FBA) to provide restock recommendations for sellers.
-\end{itemize}
+\resumeSectionBegin{Experience}
+  \resumeItemBegin
+    \resumeItemHeading{Amazon}{Software Development Engineer}{Seattle, WA}{Apr 2019 -- Present}
+    \begin{itemize}
+      \item Automated AWS resource management needed for FBA applications to integrate with new view materialization platform.
+      \item Ensured consistency across FBA applications by engineering workflow to ingest snapshots into DataWave and publish updates.
+      \item Led all service scaling and operational readiness efforts to prepare for traffic doubling during Prime Day and holiday season.
+      \item Identified a widespread data quality issue affecting sellers in Europe and designed a backfill process.
+    \end{itemize}
+  \resumeItemEnd
+  \resumeItemBegin
+    \resumeItemHeading{Capital One}{Software Engineer}{McLean, VA}{Sep 2018 -- Apr 2019}
+    \begin{itemize}
+      \item Architected a caching solution in Java/Spring for a big data platform to reduce latency for recently run Snowflake queries.
+      \item Lowered operational costs by enabling lifecycle management for the underlying cache using Python and AWS Lambda.
+      \item Rewrote the security layer for Spring microservices to use LDAP for user authentication.
+      \item Built out infrastructure with Jenkins and Terraform to automate deployment of AWS resources for the cache microservice.
+    \end{itemize}
+  \resumeItemEnd
+  \resumeItemBegin
+    \resumeItemHeading{Alarm.com}{Software Engineering Intern}{McLean, VA}{Jun 2017 -- Aug 2017}
+    \begin{itemize}
+      \item Optimized home automation testing by implementing a Windows service in C\# for allocating device tests to available servers.
+      \item Leveraged Ember.js to provide a user interface for the distributed testing service and to display real-time testing results.
+      \item Created a REST API with ASP.NET Web API to expose the distributed testing service to the client.
+    \end{itemize}
+  \resumeItemEnd
+  \resumeItemBegin
+    \resumeItemHeading{Alarm.com}{Software Engineering Intern}{McLean, VA}{Jun 2016 -- Aug 2016}
+    \begin{itemize}
+      \item Automated a tedious process by building an API in C\# to efficiently update branding information on security panels.
+      \item Implemented a caching system for account information to speed up the dealer site page load speed by 40-60\%.
+      \item Developed a responsive, customer-facing tool to allow home owners to search for and verify local home security dealers.
+    \end{itemize}
+  \resumeItemEnd
+\resumeSectionEnd
 
-\job{Capital One}{Software Engineer}{Sep 2018 -- April 2019}
-\begin{itemize}
-\item Architected a caching solution in Java/Spring for a big data platform to reduce latency for recently run Snowflake queries.
-\item Lowered operational costs by enabling lifecycle management for the underlying cache using Python and AWS Lambda.
-\item Rewrote the security layer for Spring microservices to use LDAP for user authentication.
-\item Built out infrastructure with Jenkins and Terraform to automate deployment of AWS resources for the cache microservice.
-\end{itemize}
+% Education %
 
-\job{Alarm.com}{Software Engineering Intern}{Jun 2017 -- Aug 2017}
-\begin{itemize}
-\item Optimized home automation testing by implementing a Windows service in C\# for allocating device tests to available servers.
-\item Leveraged Ember.js to provide a user interface for the distributed testing service and to display real-time testing results.
-\item Created a REST API with ASP.NET Web API to expose the distributed testing service to the client.
-\end{itemize}
+\resumeSectionBegin{Education}
+  \resumeItemBegin
+    \resumeItemHeading{George Mason University}{Bachelor of Science in Computer Science; Major GPA: 3.38.}{Fairfax, VA}{May 2018}
+  \resumeItemEnd
+\resumeSectionEnd
 
-\job{Alarm.com}{Software Engineering Intern}{Jun 2016 -- Aug 2016}
-\begin{itemize}
-\item Automated a tedious process by building an API in C\# to efficiently update branding information on security panels.
-\item Implemented a caching system for account information to speed up the dealer site page load speed by 40-60\%.
-\item Developed a responsive, customer-facing tool to allow home owners to search for and verify local home security dealers.
-\end{itemize}
+% Projects %
 
-\section*{Education}
-
-\school{George Mason University}{Bachelor of Science in Computer Science; Major GPA: 3.38.}{May 2018}
-
-\section*{Projects}
-
-\project{Music Genre Classification with Gradient Boosting}
-\begin{itemize}
-\item Applied XGBoost machine learning algorithm in Python to classify music genres using features extracted with LibROSA.
-\item Utilized Matplotlib to produce visualizations of various performance metrics to help improve the classification model.
-\end{itemize}
-
-\project{Reddit Sentiment Analysis}
-\begin{itemize}
-\item Filtered negative Reddit comments in real-time into MongoDB using TextBlob sentiment analysis.
-\item Created a user-friendly web application using Node.js, Express, and Vue.js to review newly extracted comments.
-\end{itemize}
-
-\project{Toxic Mushroom Deep Dive}
-\begin{itemize}
-\item Compared Scikit-learn machine learning algorithms in Python for predicting whether mushrooms were toxic or edible.
-\end{itemize}
-
-\section*{Certifications}
-
-\school{Certified Solutions Architect, Associate}{Amazon Web Services; Expiration Date: Dec 2020}{Dec 2018}
+\resumeSectionBegin{Projects}
+  \resumeItemBegin
+    \project{Music Genre Classification with Gradient Boosting}
+    \begin{itemize}
+      \item Applied XGBoost machine learning algorithm in Python to classify music genres using features extracted with LibROSA.
+      \item Utilized Matplotlib to produce visualizations of various performance metrics to help improve the classification model.
+    \end{itemize}
+  \resumeItemEnd
+  \resumeItemBegin
+    \project{Reddit Sentiment Analysis}
+    \begin{itemize}
+      \item Filtered negative Reddit comments in real-time into MongoDB using TextBlob sentiment analysis.
+      \item Created a user-friendly web application using Node.js, Express, and Vue.js to review newly extracted comments.
+    \end{itemize}
+  \resumeItemEnd
+  \resumeItemBegin
+    \project{Toxic Mushroom Deep Dive}
+    \begin{itemize}
+      \item Compared Scikit-learn machine learning algorithms in Python for predicting whether mushrooms were toxic or edible.
+    \end{itemize}
+  \resumeItemEnd
+\resumeSectionEnd
 
 \end{document}
